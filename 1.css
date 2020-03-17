@@ -1,0 +1,18 @@
+body {
+	background-color:  #FFDAB9;
+	color: navy;
+}
+.menu {
+	list-style: none;
+}
+.menu li{
+	display: inline-block;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #5e0e2c;
+}
+.chat__room{
+	height: 300px;
+	width: 600px;
+}

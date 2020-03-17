@@ -1,0 +1,9 @@
+body{
+	background-color:  #5f2d22 ;
+	color: #ede4b7;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+.chat__room {
+	height: 500px;
+	width: 400px;
+}

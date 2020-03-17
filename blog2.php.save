@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>All blogs</title>
+	 <script type="text/javascript">
+	function onload(){
+		printDate1();
+		printTime1();
+	}
+//13
+    	function printDate1(){ 
+   		var d = new Date();	
+    		var mm = d.getMonth()+1;
+		if (mm<10){
+    			mm='0'+mm;
+		}
+		var dd = d.getDate();
+    		if (dd<10){
+    			dd='0'+dd; 
+		}
+		document.getElementById('date1').value=d.getFullYear()+"-"+mm+"-"+dd;
+    	}
+//27
+    	function printTime1(){
+    		var d = new Date(); 
+		var hh = d.getHours();
+		if (hh < 10) { hh = "0" + hh;}
+		var mm = d.getMinutes();
+		if (mm < 10) {mm = "0" + mm;}
+		document.getElementById('time1').value=hh+":"+mm;
+    	}
+
+    	function correctDate(){
+		var date = document.getElementById('date1').value;
+		var regexDate = /^\d{4}\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$/gi;
+		if (!regexDate.test(date)){
+			printDate1();
+		}
+		else{
+			var yyyy = date.slice(0, 4);
+			var mm = date.slice(5, 7);
+			var dd = date.slice(8, 10);
+			var d = new Date;
+			if (yyyy > d.getFullYear()){
+				printDate1();
+			}
+			if (yyyy == d.getFullYear() && mm > (d.getMonth()+1)){
+				printDate1();
+			}
+			if (yyyy == d.getFullYear() && mm == (d.getMonth()+1) && dd > d.getDate()){
+				printDate1();
+			} 
+		}
+  	}
+//40    
+	function correctTime(){
+			var date = document.getElementById('time1').value
+			var regexTime = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/gi;
+			if (del1!=':')
+				del1=':';
+			
+			if (hh < 0 || hh > 24 || mm > 59 || mm < 0){
+				var d = new Date();
+				hh=d.getHours();
+    			mm=d.getMinutes();
+    			}	
+			\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$
+			document.getElementById('time1').value=hh+del1+mm;				
+    	}
+    </script>
+</head>
+
+<body onload="onload()">
+
+   <a href="blog1.php">Nowy blog</a>
+   <a href="blog2.php">Dodaj wpis</a>
+   <a href="createComment.php">Dodaj komentarz</a>
+   <a href="blog.php">Przeglądaj blogi</a>
+   <br /><br />
+
+<form action="wpis.php" method="post">
+Username:<br>
+<input type="text" name="Username" required="required"> <br>
+Passowrd:<br>
+<input type="password" name="Password" required="required"> <br><br>
+Write your post here:  <br>
+<textarea name="Content" rows="10" cols="60"></textarea> <br><br>
+<input type = "text" id="date1" name="date" onchange="correctDate()">
+<input type = "text" id="time1" name="time"><br><br>
+<input type="file" name="file1" accept="media_type"> <br>
+<input type="file" name="file2" accept="media_type"> <br>
+<input type="file" name="file3" accept="media_type"> <br> <br>
+<input type="submit" name="Post" value="Send post">
+<input type="reset" name="Reset" value="Reset">
+</form>
+
+
+</body>
+</html>

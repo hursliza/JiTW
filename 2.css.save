@@ -1,0 +1,5 @@
+body{
+	;
+	color: #ede4b7;
+	font-family: "Lucida Console", Monaco, monospace;
+}

@@ -1,0 +1,28 @@
+<?php
+	include 'menu.php';
+	$BlogName=$_POST["BlogName"];
+	$Username=$_POST["Username"];
+	$Password=$_POST["Password"];
+	$Discr=$_POST["Discr"];
+	$Passwd=md5($Password);
+
+	if (!is_dir("./blogs/".$BlogName)){
+		mkdir("./blogs/".$BlogName, 0777, true);
+		$info = fopen("./blogs/".$BlogName."/info.txt", 'w');
+		if (flock($info, LOCK_EX)){
+			fputs($info, $Username."\n");
+			fputs($info, $Passwd."\n");
+			fputs($info, $Discr."\n");
+			echo 'Blog created successfully!';
+			flock($info, LOCK_UN);
+		}
+		else  {
+			echo "Unknown error when creating the blog.";
+		}
+		fclose($info);
+	}
+	else {
+		echo 'Unable to create the blog. This blog already exists.';
+	}
+
+?>
