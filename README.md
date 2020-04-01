@@ -5,14 +5,14 @@ An implementation of a primitive blog created for AGH UST course on Web language
 ## Functionality
 
 The user can create a personal blog using a unique username and password.
-[](img/create.png)
+![](img/create.png)
 Adding a post:
-[](img/add.png)
+![](img/add.png)
 The other users can view the blogs and add comments to any post.
-[](img/view.png)
-[](img/Comment.png)
+![](img/view.png)
+![](img/comment.png)
 Also there is a built-in real-time chat:
-[](img/Chat.png)
+![](img/chat.png)
 
 ## Technologies
 * Server side
